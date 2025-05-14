@@ -31,7 +31,7 @@ class CustomModel(DistilBertForSequenceClassification):
         )
 
 model = CustomModel.from_pretrained("distilbert-base-uncased")
-model.load_state_dict(torch.load(MODEL_PATH, map_location="cpu"))
+model.load_state_dict(torch.load(MODEL_PATH, map_location="cpu", weights_only=False))  # <-- Fixed here
 model.eval()
 
 # Home route
