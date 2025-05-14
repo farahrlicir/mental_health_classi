@@ -6,17 +6,19 @@ from transformers import DistilBertTokenizer, DistilBertForSequenceClassificatio
 
 app = Flask(__name__)
 
+
 # Google Drive file ID and URL
 MODEL_FILE_ID = "1fuR4gL03rjiXh1zsfDy4xnO_0_XXh3HS"
 MODEL_URL = f"https://drive.google.com/uc?export=download&id={MODEL_FILE_ID}"
 MODEL_PATH = "best_model_dropout02_distilbert.pth"
 
 # Download the model if not already present
+
+import gdown
+
 if not os.path.exists(MODEL_PATH):
     print("Downloading model...")
-    response = requests.get(MODEL_URL)
-    with open(MODEL_PATH, 'wb') as f:
-        f.write(response.content)
+    gdown.download(f"https://drive.google.com/uc?id={MODEL_FILE_ID}", MODEL_PATH, quiet=False)
     print("Model downloaded.")
 
 # Load tokenizer and model
