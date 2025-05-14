@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mental Health Predictor</title>
+</head>
+<body>
+  <h1>Enter text to predict:</h1>
+  <form action="/predict" method="post">
+    <textarea name="text" rows="6" cols="60" placeholder="Type your sentence here..."></textarea><br><br>
+    <input type="submit" value="Predict">
+  </form>
+
+  {% if result != "" %}
+    <h2>Prediction Result: {{ result }}</h2>
+  {% endif %}
+</body>
+</html>
